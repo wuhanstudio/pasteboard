@@ -2,6 +2,7 @@
 # Environment Configuration
 ###
 auth = require "../auth"
+url = require "url"
 
 exports.init = (app, express) ->
   # General
