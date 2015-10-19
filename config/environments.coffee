@@ -19,7 +19,13 @@ exports.init = (app, express) ->
     # Set
     app.set "localrun", process.env.LOCAL or false
     app.set "port", process.env.PORT or 3000
-    app.set "domain", "http://pasteboard.co"
+    
+    if process.env.ORIGIN
+        app.set "domain", process.env.ORIGIN
+        app.set "externalPort", url.parse(process.env.ORIGIN).port or 443
+    else
+        app.set "domain", "http://pasteboard.co"
+        app.set "externalPort", app.get "port"
 
     # Amazon S3 connection settings (using knox)
     if auth.amazon

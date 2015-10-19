@@ -113,7 +113,7 @@ post.upload = (req, res) ->
 
     fileName = helpers.generateFileName(file.type.replace "image/", "")
     domain = if req.app.get "localrun" then req.headers.host else req.app.get "domain"
-    longURL = "#{domain}/#{fileName}"
+    longURL = "http://#{domain}/#{fileName}"
     sourcePath = file.path
 
     parallels = {}
