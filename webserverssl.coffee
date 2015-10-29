@@ -4,8 +4,8 @@
 fs   = require "fs"
 http = require "https"
 
-privateKey = fs.readFileSync("../pasteboard.key").toString();
-certificate = fs.readFileSync("../pasteboard.crt").toString();
+privateKey = fs.readFileSync(process.env.SSL_KEY).toString();
+certificate = fs.readFileSync(process.env.SSL_CERT).toString();
 
 credentials = {key: privateKey, cert: certificate};
 
