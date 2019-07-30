@@ -13,6 +13,7 @@ RUN apt update && \
 WORKDIR /pasteboard
 RUN npm install
 
+ENV NODE_ENV production
 ENV ORIGIN pasteboard.co
 ENV MAX 7
 
