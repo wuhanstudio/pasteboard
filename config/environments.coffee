@@ -45,6 +45,8 @@ exports.init = (app, express) ->
     app.set "views", "#{__dirname}/../views"
     app.set "view engine", "ejs"
 
+    app.set "trust proxy", process.env.TRUST_PROXY if process.env.TRUST_PROXY
+
   # Development
   app.configure "development", ->
     # Use

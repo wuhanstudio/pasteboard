@@ -30,3 +30,14 @@ sudo apt-get install imagemagick
 ```
 __Step 3 (Optional):__ Edit the example files in the _/auth_ folder with your credentials and rename them according to
 the instructions inside the files. You can still run the app without doing this, but certain functions will be missing.
+
+## Running behind a load balancer
+
+If you are running Pasteboard behind a loadbalancer, you should add the following environment variables:
+
+```bash
+NODE_ENV: production
+TRUST_PROXY: loopback, linklocal, 123.123.123.123
+```
+
+See https://expressjs.com/en/guide/behind-proxies.html for more information about proxies.
