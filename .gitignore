@@ -1,5 +1,6 @@
 builtAssets/
 node_modules/
+package-lock.json
 
 auth/*
 !auth/index.js
