@@ -1,23 +1,23 @@
-FROM node:10.16.0-stretch
-MAINTAINER AnthoDingo <lsbdu42@gmail.com>
+FROM node:alpine3.12
+MAINTAINER wuhanstudio <wuhanstudio@qq.com>
 
 ADD pasteboard.cron /etc/cron.daily/pasteboard
 
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y git imagemagick && \
+RUN apk update && \
+    apk add imagemagick && \
     chmod 755 /etc/cron.daily/pasteboard && \
-    npm install -g coffee-script && \
-    git clone https://github.com/AnthoDingo/pasteboard.git /pasteboard
+    npm install -g coffee-script
 
-WORKDIR /pasteboard
+COPY ./ /pasteboard/
+
+WORKDIR /pasteboard/
 RUN npm install
 
 ENV NODE_ENV production
-ENV ORIGIN pasteboard.co
+ENV ORIGIN pasteboard.wuhanstudio.cc
 ENV MAX 7
 
 VOLUME ["/pasteboard/public/storage/"]
-EXPOSE 4000
+EXPOSE 3000
 
-CMD /pasteboard/run_local
+CMD LOCAL=true coffee app.coffee
