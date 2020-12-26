@@ -40,7 +40,7 @@ exports.imageURL = (req, image) ->
     base = auth.amazon.CDN_URL or "http://#{auth.amazon.S3_BUCKET}.s3.amazonaws.com"
     return "#{base}#{req.app.get "amazonFilePath"}#{image}"
   else
-    "#{req.protocol}://#{req.headers.host}#{req.app.get "localStorageURL"}#{image}"
+    "https://#{req.headers.host}#{req.app.get "localStorageURL"}#{image}"
 
 # Generate the image owner key
 imageOwnerKey = (image) ->

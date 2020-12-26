@@ -261,10 +261,10 @@ appFlow = (pasteboard) ->
 
 						stateData.modal
 							.find(".image-link")
-								.val(data.url)
+								.val(data.url.replace("http://", "https://"))
 								.end()
 							.find(".link.button")
-								.attr("href", data.url)
+								.attr("href",data.url.replace("http://", "https://"))
 
 
 				else
@@ -305,7 +305,7 @@ appFlow = (pasteboard) ->
 
 					if stateData.jQueryXHR
 						stateData.xhr.success (data) ->
-							showLink data.url
+							showLink data.url.replace("http://", "https://")
 					else
 						stateData.xhr.addEventListener "load", (e) ->
 							json = {}
